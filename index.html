@@ -7,7 +7,32 @@
     <script type="text/javascript" src="index.js"></script>
 </head>
 <body>
-    <div id="report-container">
+
+    <div class="form-container">
+
+        <form id="create-record-form">
+          <h3>Vital Signs Record Sheet:</h3>
+          <label for="other">Date:</label>
+          <input id='input-date' type="text" name="date" value="" placeholder="Date" class="input-text">
+          <label for="other">Time:</label>  
+          <input id='input-time' type="text" name="date" value="" placeholder="Time" class="input-text">
+          <label for="other">Blood Pressure:/label>
+          <input id='input-blood_pressure' type="text" name="blood_pressure" value="" placeholder="Blood Pressure" class="input-text">
+          <label for="other">Temperature:</label>
+          <input id='input-temperature' type="number" name="temperature" value="" placeholder="Temperature" class="input-number">
+          <label for="other">Pulse:</label>
+          <input id='input-pulse' type="number" name="pulse" value="" placeholder="Pulse" class="input-number">
+          <label for="other">Pain:</label>
+          <input id='input-pain' type="number" name="pain" value="" placeholder="Pain" class="input-number">
+          <label for="other">Comments:</label>
+          <textarea id='input-comment' name="comment" rows="8" cols="60" value="" placeholder="Comments"></textarea>
+      
+          <input id= 'create-button' type="submit" name="submit" value="Add Record to Chart" class="submit">
+        </form>
+      
+      </div>
+    
+      <div id="record-container">
 
     </div>
 </body>
