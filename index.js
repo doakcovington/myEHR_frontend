@@ -38,5 +38,27 @@ function getRecords(){
 
 function createFormHandler(e){
     e.preventDefault(); //prevents page refresh on form submit
-    debugger
+    const dateInput = document.querySelector('#input-date').value
+    const timeInput = document.querySelector('#input-time').value
+    const blood_pressureInput = document.querySelector('#input-blood_pressure').value
+    const temperatureInput = document.querySelector('#input-temperature').value
+    const pulseInput = document.querySelector('#input-pulse').value
+    const painInput = document.querySelector('#input-pain').value
+    const commentInput = document.querySelector('#input-comment').value
+    postFetch(dateInput, timeInput, blood_pressureInput, temperatureInput, pulseInput, painInput, commentInput)
+}
+
+function postFetch(date, time, blood_pressure, temperature, pulse, pain, comment) {
+    console.log(date, time, blood_pressure, temperature, pulse, pain, comment);
+    fetch(endPoint, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(bodyData)
+    })
+    .then(response => response.json())
+    .then(record => {
+        console.log(record)
+    })
+
+    document.querySelector('#records-container').innerHTML += recordsMarkup;
 }
