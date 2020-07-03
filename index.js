@@ -1,9 +1,14 @@
+
 console.log("We Don't Go To Ravenholm")
 const endPoint = "http://localhost:3000/api/v1/records"
 
 //load DOM
 document.addEventListener('DOMContentLoaded', () => {
     getRecords();
+
+    const createRecordForm = document.querySelector("#create-record-form")
+
+    createRecordForm.addEventListener("submit", (e) => createFormHandler(e))
 });
 
 function getRecords(){
@@ -15,13 +20,13 @@ function getRecords(){
             //debugger
             const recordMarkup = `
                 <div data-id=${record.id}>
-                    <p>${record.attributes.date}</p>
-                    <p>${record.attributes.time}</p>
-                    <p>${record.attributes.blood_pressure}</p>
-                    <p>${record.attributes.temperature}</p>
-                    <p>${record.attributes.pulse}</p>
-                    <p>${record.attributes.pain}</p>
-                    <p>${record.attributes.comments}</p>
+                    <p>Date: ${record.attributes.date}</p>
+                    <p>Time: ${record.attributes.time}</p>
+                    <p>Blood Pressure: ${record.attributes.blood_pressure}</p>
+                    <p>Temperature: ${record.attributes.temperature}</p>
+                    <p>Pulse: ${record.attributes.pulse}</p>
+                    <p>Pain: ${record.attributes.pain}</p>
+                    <p>Comments: ${record.attributes.comments}</p>
                     <button data-id=${record.id}>edit</button>
                 </div>
                 <br>`;
@@ -29,4 +34,9 @@ function getRecords(){
 
         })
     })
+}
+
+function createFormHandler(e){
+    e.preventDefault(); //prevents page refresh on form submit
+    debugger
 }
