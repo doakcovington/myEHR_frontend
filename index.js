@@ -37,16 +37,16 @@ function createFormHandler(e){
     const temperatureInput = document.querySelector('#input-temperature').value
     const pulseInput = document.querySelector('#input-pulse').value
     const painInput = document.querySelector('#input-pain').value
-    const commentInput = document.querySelector('#input-comments').value
+    const commentsInput = document.querySelector('#input-comments').value
     const chartInput = document.querySelector('#chart').value
     const chartId = parseInt(chartInput)
-    postRecord(temperatureInput, pulseInput, painInput, commentInput, chartInput)
+    postRecord(temperatureInput, pulseInput, painInput, commentsInput, chartInput)
 }
 
-function postRecord(temperature, pulse, pain, comment, chart_id) {
-    console.log(temperature, pulse, pain, comment, chart_id)
+function postRecord(temperature, pulse, pain, comments, chart_id) {
+    console.log(temperature, pulse, pain, comments, chart_id)
 
-    let bodyData = {temperature, pulse, pain, comment, chart_id}
+    let bodyData = {temperature, pulse, pain, comments, chart_id}
 
     fetch(endPoint, {
         method: "POST",
@@ -56,7 +56,19 @@ function postRecord(temperature, pulse, pain, comment, chart_id) {
     .then(response => response.json())
     .then(record => {
         console.log(record);
-        //document.querySelector('#record-container').innerHTML += recordMarkup
+
+        const recordData = record.data
+        const recordMarkup = `
+            <div data-id=${record.id}>
+                <h3>${recordData.attributes.chart.pcp}<h3>
+                <p>Temperature: ${recordData.attributes.temperature}</p>
+                <p>Pulse: ${recordData.attributes.pulse}</p>
+                <p>Pain: ${recordData.attributes.pain}</p>
+                <p>Comments: ${recordData.attributes.comments}</p>
+            </div>
+            <br><br>
+        `;//end of recordMarkup
+        document.querySelector('#record-container').innerHTML += recordMarkup
     })
     // .catch((error) => {
     //     console.log(error);
