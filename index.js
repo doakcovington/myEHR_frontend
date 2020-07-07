@@ -38,17 +38,20 @@ function createFormHandler(e){
     const pulseInput = document.querySelector('#input-pulse').value
     const painInput = document.querySelector('#input-pain').value
     const commentInput = document.querySelector('#input-comments').value
-    const chartInput = document.querySelector('#charts').value
+    const chartInput = document.querySelector('#chart').value
+    const chartId = parseInt(chartInput)
     postRecord(temperatureInput, pulseInput, painInput, commentInput, chartInput)
 }
 
-function postRecord(date) {
+function postRecord(temperature, pulse, pain, comment, chart_id) {
+    console.log(temperature, pulse, pain, comment, chart_id)
+
+    let bodyData = {temperature, pulse, pain, comment, chart_id}
+
     fetch(endPoint, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-            date: date
-        })
+        body: JSON.stringify(bodyData)
     })
     .then(response => response.json())
     .then(record => {
@@ -59,21 +62,3 @@ function postRecord(date) {
     //     console.log(error);
     // })
 }
-
-
-// const data = { username: 'example' };
-
-// fetch(endPoint, {
-//   method: 'POST', // or 'PUT'
-//   headers: {
-//     'Content-Type': 'application/json',
-//   },
-//   body: JSON.stringify(data),
-// })
-// .then(response => response.json())
-// .then(data => {
-//   console.log('Success:', data);
-// })
-// .catch((error) => {
-//   console.error('Error:', error);
-// });
