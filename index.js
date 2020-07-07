@@ -1,3 +1,4 @@
+
 //console.log("We Don't Go To Ravenholm")
 const endPoint = "http://localhost:3000/api/v1/records"
 
@@ -17,19 +18,22 @@ function getRecords(){
         //console.log(records)
         records.data.forEach(record => { //data is the object key for the array value
             //debugger
-            const recordMarkup = `
-                <div data-id=${record.id}>
-                    <h3>Primary Care Provider: ${record.attributes.chart.pcp}</h3>
-                    <p>Temperature: ${record.attributes.temperature}</p>
-                    <p>Pulse: ${record.attributes.pulse}</p>
-                    <p>Pain: ${record.attributes.pain}</p>
-                    <p>Comments: ${record.attributes.comments}</p>
-                </div>
-                <br>`;
-                document.querySelector('#record-container').innerHTML += recordMarkup
-
+            renderRecord(record)
         })
     })
+}
+
+function renderRecord(record){
+    const recordMarkup = `
+        <div data-id=${record.id}>
+            <h3>Primary Care Provider: ${record.attributes.chart.pcp}</h3>
+            <p>Temperature: ${record.attributes.temperature}</p>
+            <p>Pulse: ${record.attributes.pulse}</p>
+            <p>Pain: ${record.attributes.pain}</p>
+            <p>Comments: ${record.attributes.comments}</p>
+        </div>
+        <br>`;
+    document.querySelector('#record-container').innerHTML += recordMarkup
 }
 
 function createFormHandler(e){
@@ -56,19 +60,8 @@ function postRecord(temperature, pulse, pain, comments, chart_id) {
     .then(response => response.json())
     .then(record => {
         console.log(record);
-
         const recordData = record.data
-        const recordMarkup = `
-            <div data-id=${record.id}>
-                <h3>${recordData.attributes.chart.pcp}<h3>
-                <p>Temperature: ${recordData.attributes.temperature}</p>
-                <p>Pulse: ${recordData.attributes.pulse}</p>
-                <p>Pain: ${recordData.attributes.pain}</p>
-                <p>Comments: ${recordData.attributes.comments}</p>
-            </div>
-            <br><br>
-        `;//end of recordMarkup
-        document.querySelector('#record-container').innerHTML += recordMarkup
+        renderRecord(recordData)
     })
     // .catch((error) => {
     //     console.log(error);
