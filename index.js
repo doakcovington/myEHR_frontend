@@ -38,7 +38,7 @@ function createFormHandler(e){
     const pulseInput = document.querySelector('#input-pulse').value
     const painInput = document.querySelector('#input-pain').value
     const commentsInput = document.querySelector('#input-comments').value
-    const chartInput = document.querySelector('#chart').value
+    const chartInput = document.querySelector('#charts').value
     const chartId = parseInt(chartInput)
     postRecord(temperatureInput, pulseInput, painInput, commentsInput, chartInput)
 }
