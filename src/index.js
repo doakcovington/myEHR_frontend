@@ -17,23 +17,11 @@ function getRecords(){
     .then(records => { //gets the records data 
         //console.log(records)
         records.data.forEach(record => { //data is the object key for the array value
-            //debugger
-            renderRecord(record)
+            let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class 
+
+            document.querySelector('#record-container').innerHTML += newRecord.renderRecord()
         })
     })
-}
-
-function renderRecord(record){
-    const recordMarkup = `
-        <div data-id=${record.id}>
-            <h3>Primary Care Provider: ${record.attributes.chart.pcp}</h3>
-            <p>Temperature: ${record.attributes.temperature}</p>
-            <p>Pulse: ${record.attributes.pulse}</p>
-            <p>Pain: ${record.attributes.pain}</p>
-            <p>Comments: ${record.attributes.comments}</p>
-        </div>
-        <br>`;
-    document.querySelector('#record-container').innerHTML += recordMarkup
 }
 
 function createFormHandler(e){
@@ -61,7 +49,9 @@ function postRecord(temperature, pulse, pain, comments, chart_id) {
     .then(record => {
         console.log(record);
         const recordData = record.data
-        renderRecord(recordData)
+        let newRecord = new Record(recordData, recordData.attributes) //creates new instance of Record class 
+
+        document.querySelector('#record-container').innerHTML += newRecord.renderRecord()
     })
     // .catch((error) => {
     //     console.log(error);
