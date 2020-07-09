@@ -1,5 +1,5 @@
 
-//console.log("We Don't Go To Ravenholm")
+console.log("We Don't Go To Ravenholm")
 const endPoint = "http://localhost:3000/api/v1/records"
 
 //load DOM
