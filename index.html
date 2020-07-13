@@ -6,40 +6,53 @@
     <title>Document</title>
     <script type="text/javascript" src="src/record.js"></script>
     <script type="text/javascript" src="src/index.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 </head>
 <body>
-
-    <div class="form-container">
-
-      <form id="create-record-form">
-        <h3>Create a Record!</h3>
-        <label for="temperature">Temperature:</label>
-        <input id='input-temperature' type="text" name="temperature" class="input-text">
-        <br><br>
-        <label for="pulse">Pulse:</label>
-        <input id='input-pulse' type="text" name="pulse" class="input-text">
-        <br><br>
-        <label for="pain">Pain:</label>
-        <input id='input-pain' type="text" name="pain" class="input-text">
-        <br><br>
-        <label for="comments">Comments:</label>
-        <textarea id="input-comments" name="comments" rows="5" cols="40"></textarea>
-        <br><br>
-        <label for="charts">Primary Care Provider:</label>
-        <select id="charts" name="charts">
-          <option value="1">Dr.Hoffman</option>
-          <option value="2">Dr. Test</option>
-        </select>
-        <br><br>
-    
-        <input id= 'create-button' type="submit" name="submit" value="Create New Record" class="submit">
+    <div class="container">
+      <h3>Vital Signs Record Sheet</h3>
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="temperature">Temperature:</label>
+          <input id='input-temperature' type="text" name="temperature" class="input-text">
+        </div>
+        <div class="form-group">
+          <label for="pulse">Pulse:</label>
+          <input id='input-pulse' type="text" name="pulse" class="input-text">
+        </div>
+        <div class="form-group">
+          <label for="pain">Pain:</label>
+          <input id='input-pain' type="text" name="pain" class="input-text">
+        </div>
+        <div class="form-group">
+          <label for="comments">Comments:</label>
+          <textarea id="input-comments" name="comments"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="charts">Primary Care Provider:</label>
+          <select id="charts" name="charts">
+            <option value="1">Dr.Hoffman</option>
+            <option value="2">Dr. Test</option>
+          </select>
+        </div>
+          <input id= 'create-button' type="submit" name="submit" value="Create New Record" class="submit">
       </form>
-      
-    </div>
 
         
-    <div id="record-container">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Primary Care Provider</th>
+            <th>Temperature</th>
+            <th>Pulse</th>
+            <th>Comments</th>
+          </tr>
+        </thead>
+          <tbody id="table-body">
 
+          </tbody>
+      </table>
     </div>
 
 </body>

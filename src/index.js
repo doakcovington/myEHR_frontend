@@ -6,7 +6,7 @@ const endPoint = "http://localhost:3000/api/v1/records"
 document.addEventListener('DOMContentLoaded', () => {
     getRecords()
   
-    let createRecordForm = document.querySelector('#create-record-form')
+    let createRecordForm = document.querySelector('.form-inline')
   
     createRecordForm.addEventListener('submit', (e) => createFormHandler(e))
   });
@@ -19,7 +19,7 @@ function getRecords(){
         records.data.forEach(record => { //data is the object key for the array value
             let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class 
 
-            document.querySelector('#record-container').innerHTML += newRecord.renderRecord()
+            document.querySelector('#table-body').innerHTML += newRecord.renderRecord()
         })
     })
 }
@@ -51,7 +51,7 @@ function postRecord(temperature, pulse, pain, comments, chart_id) {
         const recordData = record.data
         let newRecord = new Record(recordData, recordData.attributes) //creates new instance of Record class 
 
-        document.querySelector('#record-container').innerHTML += newRecord.renderRecord()
+        document.querySelector('#table-body').innerHTML += newRecord.renderRecord()
     })
     // .catch((error) => {
     //     console.log(error);

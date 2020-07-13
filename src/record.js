@@ -13,14 +13,21 @@ class Record {
 
     renderRecord(){
         return `
-            <div data-id=${this.id}>
-                <h3>Primary Care Provider: ${this.chart.pcp}</h3>
-                <p>Temperature: ${this.temperature}</p>
-                <p>Pulse: ${this.pulse}</p>
-                <p>Pain: ${this.pain}</p>
-                <p>Comments: ${this.comments}</p>
-            </div>
-            <br>`;
+                <tr>
+                    <td>${this.chart.pcp}</td>
+                    <td>${this.temperature}</td>
+                    <td>${this.pulse}</td>
+                    <td>${this.comments}</td>
+                </tr>
+            `;
+
+            // <div data-id=${this.id}>
+            // <h3>Primary Care Provider: ${this.chart.pcp}</h3>
+            // <p>Temperature: ${this.temperature}</p>
+            // <p>Pulse: ${this.pulse}</p>
+            // <p>Pain: ${this.pain}</p>
+            // <p>Comments: ${this.comments}</p>
+            // </div>
     }
 }
 
