@@ -14,27 +14,27 @@
       <h3>Vital Signs Record Sheet</h3>
       <form class="form-inline">
         <div class="form-group">
-          <label for="temperature">Temperature:</label>
-          <input id='input-temperature' type="text" name="temperature" class="input-text">
-        </div>
-        <div class="form-group">
-          <label for="pulse">Pulse:</label>
-          <input id='input-pulse' type="text" name="pulse" class="input-text">
-        </div>
-        <div class="form-group">
-          <label for="pain">Pain:</label>
-          <input id='input-pain' type="text" name="pain" class="input-text">
-        </div>
-        <div class="form-group">
-          <label for="comments">Comments:</label>
-          <textarea id="input-comments" name="comments"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="charts">Primary Care Provider:</label>
+          <!-- <label for="charts">Primary Care Provider:</label> -->
           <select id="charts" name="charts">
             <option value="1">Dr.Hoffman</option>
             <option value="2">Dr. Test</option>
           </select>
+        </div>
+        <div class="form-group">
+          <!-- <label for="temperature">Temperature:</label> -->
+          <input id='input-temperature' type="text" name="temperature" class="input-text" placeholder="Temperature">
+        </div>
+        <div class="form-group">
+          <!-- <label for="pulse">Pulse:</label> -->
+          <input id='input-pulse' type="text" name="pulse" class="input-text" placeholder="Pulse">
+        </div>
+        <div class="form-group">
+          <!-- <label for="pain">Pain:</label> -->
+          <input id='input-pain' type="text" name="pain" class="input-text" placeholder="Pain">
+        </div>
+        <div class="form-group">
+          <!-- <label for="comments">Comments:</label> -->
+          <textarea id="input-comments" name="comments" placeholder="Comments"></textarea>
         </div>
           <input id= 'create-button' type="submit" name="submit" value="Create New Record" class="submit">
       </form>
