@@ -6,7 +6,7 @@ const endPoint = "http://localhost:3000/api/v1/records"
 document.addEventListener('DOMContentLoaded', () => {
     getRecords()
   
-    let createRecordForm = document.querySelector('#create-record-form')
+    let createRecordForm = document.querySelector('.form-inline')
   
     createRecordForm.addEventListener('submit', (e) => createFormHandler(e))
   });
