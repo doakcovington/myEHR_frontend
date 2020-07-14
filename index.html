@@ -10,42 +10,43 @@
 
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
       <h3>Vital Signs Record Sheet</h3>
-      <form class="form-inline">
-        <div class="form-group">
-          <!-- <label for="charts">Primary Care Provider:</label> -->
-          <select id="charts" name="charts">
+      <form>
+        <div class="col-sm-2 my-1">
+          <label for="charts"  class="control-label">Primary Care Provider:</label>
+          <select id="charts" name="charts" class="form-control">
             <option value="1">Dr.Hoffman</option>
             <option value="2">Dr. Test</option>
           </select>
         </div>
-        <div class="form-group">
-          <!-- <label for="temperature">Temperature:</label> -->
-          <input id='input-temperature' type="text" name="temperature" class="input-text" placeholder="Temperature">
+        <div class="col-sm-2 my-1">
+          <label for="temperature"  class="control-label">Temperature:</label>
+          <input id='input-temperature' type="text" name="temperature" class="form-control" placeholder="Temperature">
         </div>
-        <div class="form-group">
-          <!-- <label for="pulse">Pulse:</label> -->
-          <input id='input-pulse' type="text" name="pulse" class="input-text" placeholder="Pulse">
+        <div class="col-sm-2 my-1">
+          <label for="pulse"  class="control-label">Pulse:</label>
+          <input id='input-pulse' type="text" name="pulse" class="form-control" placeholder="Pulse">
         </div>
-        <div class="form-group">
-          <!-- <label for="pain">Pain:</label> -->
-          <input id='input-pain' type="text" name="pain" class="input-text" placeholder="Pain">
+        <div class="col-sm-2 my-1">
+          <label for="pain"  class="control-label">Pain:</label>
+          <input id='input-pain' type="text" name="pain" class="form-control" placeholder="Pain">
         </div>
-        <div class="form-group">
-          <!-- <label for="comments">Comments:</label> -->
-          <textarea id="input-comments" name="comments" placeholder="Comments"></textarea>
+        <div class="col-sm-2 my-1">
+          <label for="comments"  class="control-label">Comments:</label>
+          <textarea id="input-comments" name="comments" placeholder="Comments" class="form-control"></textarea>
         </div>
           <input id= 'create-button' type="submit" name="submit" value="Create New Record" class="submit">
       </form>
 
         
-      <table class="table table-bordered">
+      <table class="table table-bordered table-striped">
         <thead>
           <tr>
             <th>Primary Care Provider</th>
             <th>Temperature</th>
             <th>Pulse</th>
+            <th>Pain</th>
             <th>Comments</th>
           </tr>
         </thead>
