@@ -17,6 +17,7 @@ class Record {
                     <td>${this.chart.pcp}</td>
                     <td>${this.temperature}</td>
                     <td>${this.pulse}</td>
+                    <td>${this.pain}
                     <td>${this.comments}</td>
                 </tr>
             `;
