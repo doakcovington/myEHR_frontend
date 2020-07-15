@@ -9,9 +9,24 @@ document.addEventListener('DOMContentLoaded', () => {
     let createRecordForm = document.querySelector('.container-fluid')
     createRecordForm.addEventListener('submit', (e) => createFormHandler(e))
     
-    let deleteRecord = document.querySelector('#table-body')
-    deleteRecord.addEventListener('click', (e) => {
-        console.log('clicked')
+    let selectRecord = document.querySelector('#table-body')
+    selectRecord.addEventListener('click', (e) => {
+         console.log('clicked')
+        const id = (e.target.dataset.recordId)
+        console.log(id)
+        const record = Record.findById(id);
+        console.log(record)
+        const options = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        fetch(`${endPoint}/${id}`,options)
+        .then(res => {
+            res.json()
+        })
+        .then(() => e.target.parentNode.parentNode.remove());
     })
 });
 
@@ -22,7 +37,6 @@ function getRecords(){
         //console.log(records)
         records.data.forEach(record => { //data is the object key for the array value
             let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class 
-
             document.querySelector('#table-body').innerHTML += newRecord.renderRecord()
         })
     })
@@ -61,3 +75,12 @@ function postRecord(temperature, pulse, pain, comments, chart_id) {
     //     console.log(error);
     // })
 }
+
+// function deleteRecord(record){
+//     const recordId = e.target.dataset.recordId
+//     fetch(`${endPoint}/${recordId}`, {
+//         method: 'DELETE'
+//     })
+//     .then(response => response.json())
+//     .then(record => e.target.parentElement.remove());
+// }
