@@ -24,6 +24,10 @@ class Record {
                 </tr>
             `;
     }
+
+    static findById(id) {
+        return this.all.find(record => record.id === id);
+      }
 }
 
 Record.all = []; //global scope
