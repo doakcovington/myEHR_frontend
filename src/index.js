@@ -7,9 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     getRecords()
   
     let createRecordForm = document.querySelector('.container-fluid')
-  
     createRecordForm.addEventListener('submit', (e) => createFormHandler(e))
-  });
+    
+    let deleteRecord = document.querySelector('#table-body')
+    deleteRecord.addEventListener('click', (e) => {
+        console.log('clicked')
+    })
+});
 
 function getRecords(){
     fetch(endPoint)
