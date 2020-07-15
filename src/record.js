@@ -20,7 +20,7 @@ class Record {
                     <td>${this.pulse}</td>
                     <td>${this.pain}
                     <td>${this.comments}</td>
-                    <td><button type="button" class="btn btn-danger">X</button></td>
+                    <td><button type="button" class="btn btn-danger" data-record-id="${this.id}">X</button></td>
                 </tr>
             `;
     }
