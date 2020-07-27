@@ -15,12 +15,12 @@ class Record {
     renderRecord(){
         return `
                 <tr data-record-id=${this.id}>
-                    <td>${this.chart.pcp}</td>
+                    <td class="text-center">${this.chart.pcp}</td>
                     <td class=${this.temperature >= 99 ? "bg-danger": console.log("false")}>${this.temperature}</td>
-                    <td>${this.pulse}</td>
-                    <td>${this.pain}
-                    <td>${this.comments}</td>
-                    <td><button type="button" class="btn btn-danger" data-record-id=${this.id}>X</button></td>
+                    <td class="text-center">${this.pulse}</td>
+                    <td class="text-center">${this.pain}
+                    <td class="text-center">${this.comments}</td>
+                    <td class="text-center"><button type="button" class="btn btn-danger" data-record-id=${this.id}>X</button></td>
                 </tr>
             `;
     }
