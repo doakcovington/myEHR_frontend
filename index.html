@@ -5,31 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container-fluid">
       <h3>Vital Signs Record Sheet</h3>
       <form>
-        <div class="col-sm-2 my-1">
+        <div class="col-sm-2 my-1 text-center">
           <label for="charts"  class="control-label">Primary Care Provider:</label>
           <select id="charts" name="charts" class="form-control">
             <option value="1">Dr.Hoffman</option>
             <option value="2">Dr. Test</option>
           </select>
         </div>
-        <div class="col-sm-2 my-1">
+        <div class="col-sm-2 my-1 text-center">
           <label for="temperature"  class="control-label">Temperature:</label>
           <input id='input-temperature' type="text" name="temperature" class="form-control" placeholder="Temperature">
         </div>
-        <div class="col-sm-2 my-1">
+        <div class="col-sm-2 my-1 text-center">
           <label for="pulse"  class="control-label">Pulse:</label>
           <input id='input-pulse' type="text" name="pulse" class="form-control" placeholder="Pulse">
         </div>
-        <div class="col-sm-2 my-1">
+        <div class="col-sm-2 my-1 text-center">
           <label for="pain"  class="control-label">Pain:</label>
           <input id='input-pain' type="text" name="pain" class="form-control" placeholder="Pain">
         </div>
-        <div class="col-sm-2 my-1">
+        <div class="col-sm-2 my-1 text-center">
           <label for="comments"  class="control-label">Comments:</label>
           <textarea id="input-comments" name="comments" placeholder="Comments" class="form-control"></textarea>
         </div>
@@ -40,12 +41,12 @@
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th>Primary Care Provider</th>
-            <th>Temperature</th>
-            <th>Pulse</th>
-            <th>Pain</th>
-            <th>Comments</th>
-            <th>Delete:</th>
+            <th class="text-center">Primary Care Provider</th>
+            <th class="text-center">Temperature</th>
+            <th class="text-center">Pulse</th>
+            <th class="text-center">Pain</th>
+            <th class="text-center">Comments</th>
+            <th class="text-center">Delete:</th>
           </tr>
         </thead>
           <tbody id="table-body">
