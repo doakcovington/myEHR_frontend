@@ -14,7 +14,6 @@ class Record {
     renderRecord(){
         return `
                 <tr data-record-id=${this.id}>
-                    <td class="text-center">${this.chart.pcp}</td>
                     <td class=${this.temperature >= 99 ? "bg-danger" : "text-center"}>${this.temperature}</td>
                     <td class="text-center">${this.pulse}</td>
                     <td class="text-center">${this.pain}
