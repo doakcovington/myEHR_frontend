@@ -4,7 +4,8 @@ const endPoint = "http://localhost:3000/api/v1/records"
 
 //load DOM
 document.addEventListener('DOMContentLoaded', () => {
-    getRecords()
+    getChart();
+    getRecords();
   
     let createRecordForm = document.querySelector('.container-fluid')
     createRecordForm.addEventListener('submit', (e) => createFormHandler(e))
@@ -30,6 +31,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     })
 });
+
+function getChart(){
+    const chartEndPoint = "http://localhost:3000/api/v1/charts"
+    
+    fetch(chartEndPoint)
+    .then(response => response.json())
+    .then(chart => {
+        chart.data.forEach(chart => {
+            const chartMarkup = `
+            <div class="row">
+                <div class="col-sm-4" style="background-color:lavender;">Name: ${chart.attributes.name}</div>
+                <div class="col-sm-4" style="background-color:lavenderblush;">Date of Birth:</div>
+                <div class="col-sm-4" style="background-color:lavender;">Primary Care Provider: ${chart.attributes.pcp}</div>
+            </>`
+            document.querySelector('.container-fluid').innerHTML += chartMarkup
+        })
+    })
+}
 
 function getRecords(){
     fetch(endPoint)
