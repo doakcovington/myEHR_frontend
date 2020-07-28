@@ -42,7 +42,7 @@ function getChart(){
             const chartMarkup = `
             <div class="row">
                 <div class="col-sm-4" style="background-color:lavender;">Name: ${chart.attributes.name}</div>
-                <div class="col-sm-4" style="background-color:lavenderblush;">Date of Birth:</div>
+                <div class="col-sm-4" style="background-color:lavenderblush;">Date of Birth: ${chart.attributes.dob}</div>
                 <div class="col-sm-4" style="background-color:lavender;">Primary Care Provider: ${chart.attributes.pcp}</div>
             </>`
             document.querySelector('#chart-container').innerHTML += chartMarkup
