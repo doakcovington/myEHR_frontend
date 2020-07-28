@@ -8,7 +8,7 @@ class Record {
         this.pain = recordAttributes.pain
         this.comments = recordAttributes.comments
         this.chart = recordAttributes.chart
-        Record.all.push(this) //pushes each new instance into the array 
+        Record.all.push(this) //pushes each new instance into the array
     }
 
     renderRecord(){
@@ -19,7 +19,7 @@ class Record {
                     <td class="text-center">${this.pulse}</td>
                     <td class="text-center">${this.pain}
                     <td class="text-center">${this.comments}</td>
-                    <td class="text-center"><button type="button" class="btn btn-danger btn-sm" data-record-id=${this.id}>X</button></td>
+                    <td class="delete"><button type="button" class="btn btn-danger" data-record-id=${this.id}>X</button></td>
                 </tr>
             `;
     }

@@ -10,12 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     createRecordForm.addEventListener('submit', (e) => createFormHandler(e))
     
     let selectRecord = document.querySelector('#table-body')
+    console.log(selectRecord)
     selectRecord.addEventListener('click', (e) => {
-         console.log('clicked')
-        const id = (e.target.dataset.recordId)
-        console.log(id)
-        const record = Record.findById(id);
-        console.log(record)
+    (e.target.classList.contains('btn'))
+        console.log(e)
+    const id = (e.target.dataset.recordId)
+    if(id){
         const options = {
             method: 'DELETE',
             headers: {
@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(res => {
             res.json()
         })
-        .then(() => e.target.parentNode.parentNode.remove());
+        .then(() => e.target.parentElement.parentNode.remove());
+    }
     })
 });
 
@@ -44,13 +45,13 @@ function getRecords(){
 
 function createFormHandler(e){
     e.preventDefault(); //prevents page refresh on form submit
-    const temperatureInput = document.querySelector('#input-temperature').value
-    const pulseInput = document.querySelector('#input-pulse').value
-    const painInput = document.querySelector('#input-pain').value
+    const temperatureInput = document.querySelector('#validationDefault02').value
+    const pulseInput = document.querySelector('#validationDefault03').value
+    const painInput = document.querySelector('#validationDefault04').value
     const commentsInput = document.querySelector('#input-comments').value
     const chartInput = document.querySelector('#charts').value
     const chartId = parseInt(chartInput)
-    postRecord(temperatureInput, pulseInput, painInput, commentsInput, chartInput)
+    postRecord(temperatureInput, pulseInput, painInput, commentsInput, chartInput, chartId)
 }
 
 function postRecord(temperature, pulse, pain, comments, chart_id) {
@@ -67,8 +68,7 @@ function postRecord(temperature, pulse, pain, comments, chart_id) {
     .then(record => {
         console.log(record);
         const recordData = record.data
-        let newRecord = new Record(recordData, recordData.attributes) //creates new instance of Record class 
-
+        let newRecord = new Record(recordData.id, recordData.attributes) //creates new instance of Record class 
         document.querySelector('#table-body').innerHTML += newRecord.renderRecord()
     })
     // .catch((error) => {
