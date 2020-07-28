@@ -45,7 +45,7 @@ function getChart(){
                 <div class="col-sm-4" style="background-color:lavenderblush;">Date of Birth:</div>
                 <div class="col-sm-4" style="background-color:lavender;">Primary Care Provider: ${chart.attributes.pcp}</div>
             </>`
-            document.querySelector('.container-fluid').innerHTML += chartMarkup
+            document.querySelector('#chart-container').innerHTML += chartMarkup
         })
     })
 }
