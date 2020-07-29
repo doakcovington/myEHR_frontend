@@ -1,8 +1,8 @@
 console.log("record.js")
-
 class Record {
     constructor(id, recordAttributes) {
         this.id = id
+        this.created_at = recordAttributes.created_at
         this.temperature = recordAttributes.temperature
         this.pulse = recordAttributes.pulse
         this.pain = recordAttributes.pain
@@ -14,6 +14,7 @@ class Record {
     renderRecord(){
         return `
                 <tr data-record-id=${this.id}>
+                    <td class="text-center">${this.created_at}</td>
                     <td class=${this.temperature >= 99 ? "bg-danger" : "text-center"}>${this.temperature}</td>
                     <td class="text-center">${this.pulse}</td>
                     <td class="text-center">${this.pain}
