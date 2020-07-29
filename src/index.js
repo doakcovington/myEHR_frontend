@@ -62,13 +62,15 @@ function getRecords(){
 
 function createFormHandler(e){
     e.preventDefault(); //prevents page refresh on form submit
+    const systolicInput = document.querySelector('#systolic').value
+    const diastolicInput = document.querySelector('#diastolic').value
     const temperatureInput = document.querySelector('#validationDefault02').value
     const pulseInput = document.querySelector('#validationDefault03').value
     const painInput = document.querySelector('#validationDefault04').value
     const commentsInput = document.querySelector('#input-comments').value
     const chartInput = document.querySelector('#charts').value
     const chartId = parseInt(chartInput)
-    postRecord(temperatureInput, pulseInput, painInput, commentsInput, chartInput, chartId)
+    postRecord(systolicInput,diastolicInput ,temperatureInput, pulseInput, painInput, commentsInput, chartInput, chartId)
 }
 
 function formatDate(date){
@@ -84,10 +86,10 @@ function formatDate(date){
     return [year, month, day].join('/');
 }
 
-function postRecord(temperature, pulse, pain, comments, chart_id) {
+function postRecord(systolic, diastolic, temperature, pulse, pain, comments, chart_id) {
     console.log(temperature, pulse, pain, comments, chart_id)
 
-    let bodyData = {temperature, pulse, pain, comments, chart_id}
+    let bodyData = {systolic, diastolic, temperature, pulse, pain, comments, chart_id}
 
     fetch(endPoint, {
         method: "POST",
