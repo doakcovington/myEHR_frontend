@@ -1,4 +1,3 @@
-
 console.log("We Don't Go To Ravenholm")
 const endPoint = "http://localhost:3000/api/v1/records"
 
@@ -6,7 +5,6 @@ const endPoint = "http://localhost:3000/api/v1/records"
 document.addEventListener('DOMContentLoaded', () => {
     getChart();
     getRecords();
-  
     let createRecordForm = document.querySelector('.container-fluid')
     createRecordForm.addEventListener('submit', (e) => createFormHandler(e))
     
@@ -42,7 +40,7 @@ function getChart(){
             const chartMarkup = `
             <div class="row">
                 <div class="col-sm-4" style="background-color:lavender;">Name: ${chart.attributes.name}</div>
-                <div class="col-sm-4" style="background-color:lavenderblush;">Date of Birth: ${chart.attributes.dob}</div>
+                <div class="col-sm-4" style="background-color:lavenderblush;">Date of Birth: ${formatDate(chart.attributes.dob)}</div>
                 <div class="col-sm-4" style="background-color:lavender;">Primary Care Provider: ${chart.attributes.pcp}</div>
             </>`
             document.querySelector('#chart-container').innerHTML += chartMarkup
@@ -71,6 +69,19 @@ function createFormHandler(e){
     const chartInput = document.querySelector('#charts').value
     const chartId = parseInt(chartInput)
     postRecord(temperatureInput, pulseInput, painInput, commentsInput, chartInput, chartId)
+}
+
+function formatDate(date){
+    let newDate = new Date(date),
+    month = '' + (newDate.getMonth() + 1),
+    day = '' + newDate.getDate(),
+    year = newDate.getFullYear();
+
+    if(month.length < 2)
+        month = '0' + month;
+    if(day.length < 2)
+        day = '0' + day;
+    return [year, month, day].join('/');
 }
 
 function postRecord(temperature, pulse, pain, comments, chart_id) {
