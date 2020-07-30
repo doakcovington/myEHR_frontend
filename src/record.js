@@ -43,7 +43,27 @@ class Record {
 
     static findById(id) {
         return this.all.find(record => record.id === id);
-      }
+    }
+
+    static sortTemp(){
+        let temps = [];
+        Record.all.forEach(record => temps.push(record.temperature)) //pushs all temps to temps array
+        return temps.sort(function(a,b){return b - a}); //sorts temps high to low
+        
+    }
 }
 
 Record.all = []; //global scope
+
+// Record.all
+// (2) [Record, Record]0: Record {id: "1", systolic: 120, diastolic: 60, created_at: "2020-07-29T21:17:02.146Z", temperature: 98.5, …}1: Record {id: "2", systolic: 125, diastolic: 65, created_at: "2020-07-29T21:17:02.152Z", temperature: 100, …}length: 2__proto__: Array(0)
+// Record.all[0]
+// Record {id: "1", systolic: 120, diastolic: 60, created_at: "2020-07-29T21:17:02.146Z", temperature: 98.5, …}
+// var temps = [];
+// undefined
+// Record.all.forEach(record => temps.push(record.temperature))
+// undefined
+// temps
+// (2) [98.5, 100]
+// temps.sort(function(a,b){return b - a});
+// (2) [100, 98.5]
