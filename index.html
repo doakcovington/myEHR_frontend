@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="src/styles.css">
 </head>
 <body>
@@ -15,7 +17,7 @@
       <div class="page-header">
         <h1>Vital Signs Record Report</h1>
       </div> -->
-      <form>
+      <form id="myForm">
         <div class="col-sm-2 my-1 text-center">
           <label for="validationDefault01"  class="control-label">Primary Care Provider (PCP)</label>
           <select id="charts" name="charts" class="form-control">
@@ -57,7 +59,12 @@
           <tr>
             <th class="text-center">Date</th>
             <th class="text-center">Blood Pressure</th>
-            <th class="text-center">Temperature</th>
+            <th class="text-center"><button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></class>Temperature</th>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
             <th class="text-center">Pulse</th>
             <th class="text-center">Pain</th>
             <th class="text-center">Comments</th>
@@ -67,6 +74,22 @@
           <tbody id="table-body">
           </tbody>
       </table>
+      <div class="container">
+        <h2>Dropdowns</h2>
+        <p>The .dropdown class is used to indicate a dropdown menu.</p>
+        <p>Use the .dropdown-menu class to actually build the dropdown menu.</p>
+        <p>To open the dropdown menu, use a button or a link with a class of .dropdown-toggle and data-toggle="dropdown".</p>                                          
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">HTML</a></li>
+            <li><a href="#">CSS</a></li>
+            <li><a href="#">JavaScript</a></li>
+          </ul>
+        </div>
+      </div>
+      <!---->
     </div>
     <script type="text/javascript" src="src/index.js"></script>
     <script type="text/javascript" src="src/record.js"></script>
