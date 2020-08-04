@@ -44,12 +44,6 @@ class Record {
     static findById(id) {
         return this.all.find(record => record.id === id);
     }
-
-    static sortTemp(){
-        Record.all.sort(function(a,b){
-            return b.temperature - a.temperature;
-        });
-    }
 }
 
 Record.all = []; //global scope
