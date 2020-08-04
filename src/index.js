@@ -28,43 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(() => e.target.parentElement.parentNode.remove());
         }
     })
-    // let selectTemps = document.querySelector("a[href='#high']");
-    // selectTemps.addEventListener('click', (e) => {
-    //     let table = document.querySelector('#table-body')
-    //     table.innerHTML = "";
-    //     let sortedRecords = Record.all.sort(function(a,b){
-    //         if(e.target === selectTemps) {
-    //             return b.temperature - a.temperature;
-    //         }
-    //     });
-    //     sortedRecords.forEach(record => { //data is the object key for the array value
-    //         //sort the data here? using conditionals?
-    //         let newRecord = new Record(record.id, record) //creates new instance of Record class
-    //         document.querySelector('#table-body').innerHTML += newRecord.renderRecord();
-    //     })      
-    // })
+
 });
-
-// function sorted() {
-//     let result = "";
-//     let selectTemps = document.querySelector('.dropdown-menu')
-//     selectTemps.addEventListener('click', (e) => {
-//         let lowSelector = document.querySelector("a[href='#low']");//needs to be a tag inside of li tag with id
-//         let highSelector = document.querySelector("a[href='#high']");
-//         let dateSelector = document.querySelector("a[href='#date']");
-//         if(e.target === highSelector) {
-//             result = 'high';
-//         }else if(e.target === lowSelector)
-//             result = 'low';
-//         else{
-//             result = 'date';
-//         }
-//         return result;
-//     })
-// }
-
-
-
 
 function getChart(){
     const chartEndPoint = "http://localhost:3000/api/v1/charts"
@@ -89,12 +54,12 @@ function getRecords(){
     .then(response => response.json())
     .then(records => { //gets the records data 
         //console.log(records)
-        // let highTemps = records.data.sort(function(a,b){
-        //     return b.attributes.temperature - a.attributes.temperature;
-        // })
-        // let lowTemps = records.data.sort(function(a,b){
-        //     return a.attributes.temperature - b.attributes.temperature;
-        // })
+        records.data.forEach(record => { //data is the object key for the array value
+            //sort the data here? using conditionals?
+            let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class
+            document.querySelector('#table-body').innerHTML += newRecord.renderRecord();
+        }) 
+
         let highTemps = document.querySelector("a[href='#high']");
         highTemps.addEventListener('click', (e) => {
             if(e.target === highTemps) {
@@ -137,13 +102,7 @@ function getRecords(){
                     document.querySelector('#table-body').innerHTML += newRecord.renderRecord();
                 })
             }
-        })
-
-        records.data.forEach(record => { //data is the object key for the array value
-            //sort the data here? using conditionals?
-            let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class
-            document.querySelector('#table-body').innerHTML += newRecord.renderRecord();
-        })   
+        })  
     })
 }
 
@@ -205,17 +164,25 @@ function postRecord(systolic, diastolic, temperature, pulse, pain, comments, cha
 //     .then(record => e.target.parentElement.remove());
 // }
 
-// var temps = [];
-// undefined
-// temps
-// []
-// records.data.forEach(record => temps.push(record.attributes.temperature))
-// undefined
-// temps
-// (2) [98.5, 100]
-// temps.sort(function(a,b){return a - b});
-// (2) [98.5, 100]
-// temps.sort(function(a,b){return b - a});
-// (2) [100, 98.5]
+    // let selectTemps = document.querySelector("a[href='#high']");
+    // selectTemps.addEventListener('click', (e) => {
+    //     let table = document.querySelector('#table-body')
+    //     table.innerHTML = "";
+    //     let sortedRecords = Record.all.sort(function(a,b){
+    //         if(e.target === selectTemps) {
+    //             return b.temperature - a.temperature;
+    //         }
+    //     });
+    //     sortedRecords.forEach(record => { //data is the object key for the array value
+    //         //sort the data here? using conditionals?
+    //         let newRecord = new Record(record.id, record) //creates new instance of Record class
+    //         document.querySelector('#table-body').innerHTML += newRecord.renderRecord();
+    //     })      
+    // })
 
-// document.getElementsByClassName('.high').addEventListener("click", sortTemp());
+            // let highTemps = records.data.sort(function(a,b){
+        //     return b.attributes.temperature - a.attributes.temperature;
+        // })
+        // let lowTemps = records.data.sort(function(a,b){
+        //     return a.attributes.temperature - b.attributes.temperature;
+        // })
