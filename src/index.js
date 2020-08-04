@@ -53,7 +53,6 @@ function getRecords(){
     fetch(endPoint)
     .then(response => response.json())
     .then(records => { //gets the records data 
-        //console.log(records)
         records.data.forEach(record => { //data is the object key for the array value
             //sort the data here? using conditionals?
             let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class
@@ -69,9 +68,9 @@ function getRecords(){
                     return b.attributes.temperature - a.attributes.temperature;
                 })
                 sortedHigh.forEach(record => { //data is the object key for the array value
-                    //sort the data here? using conditionals?
+                    //sort the data here? using conditionals?   
                     let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class
-                    document.querySelector('#table-body').innerHTML += newRecord.renderRecord();
+                    table.innerHTML += newRecord.renderRecord();
                 }) 
             }
         })
@@ -90,6 +89,7 @@ function getRecords(){
             }
         })
         let dateSelector = document.querySelector("a[href='#date']");
+        console.log(dateSelector)
         dateSelector.addEventListener('click', (e) => {
             if(e.target === dateSelector) {
                 let table = document.querySelector('#table-body');
@@ -134,7 +134,7 @@ function formatDate(date) {
 
 
 function postRecord(systolic, diastolic, temperature, pulse, pain, comments, chart_id) {
-    console.log(temperature, pulse, pain, comments, chart_id)
+    //console.log(temperature, pulse, pain, comments, chart_id)
 
     let bodyData = {systolic, diastolic, temperature, pulse, pain, comments, chart_id}
 
@@ -145,10 +145,11 @@ function postRecord(systolic, diastolic, temperature, pulse, pain, comments, cha
     })
     .then(response => response.json())
     .then(record => {
-        console.log(record);
+        //console.log(record);
         const recordData = record.data
         let newRecord = new Record(recordData.id, recordData.attributes) //creates new instance of Record class 
         document.querySelector('#table-body').innerHTML += newRecord.renderRecord()
+        location.reload();
     })
     // .catch((error) => {
     //     console.log(error);
