@@ -124,7 +124,21 @@ function getRecords(){
                 })
             }
         })
-        
+        let dateSelector = document.querySelector("a[href='#date']");
+        dateSelector.addEventListener('click', (e) => {
+            if(e.target === dateSelector) {
+                let table = document.querySelector('#table-body');
+                table.innerHTML = "";
+                let sortedDate = records.data.sort(function(a,b) {
+                    return a.attributes.created_at - b.attributes.created_at;
+                })
+                sortedDate.forEach(record => {
+                    let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class
+                    document.querySelector('#table-body').innerHTML += newRecord.renderRecord();
+                })
+            }
+        })
+
         records.data.forEach(record => { //data is the object key for the array value
             //sort the data here? using conditionals?
             let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class
