@@ -11,24 +11,52 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectRecord = document.querySelector('#table-body')
     console.log(selectRecord)
     selectRecord.addEventListener('click', (e) => {
-    (e.target.classList.contains('btn'))
-        console.log(e)
-    const id = (e.target.dataset.recordId)
-    if(id){
-        const options = {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
+        (e.target.classList.contains('btn'))
+            console.log(e)
+        const id = (e.target.dataset.recordId)
+        if(id){
+            const options = {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             }
+            fetch(`${endPoint}/${id}`,options)
+            .then(res => {
+                res.json()
+            })
+            .then(() => e.target.parentElement.parentNode.remove());
         }
-        fetch(`${endPoint}/${id}`,options)
-        .then(res => {
-            res.json()
-        })
-        .then(() => e.target.parentElement.parentNode.remove());
-    }
     })
+
+    function sorted() {
+        let result = "";
+        let selectTemps = document.querySelector('.dropdown-menu')
+        selectTemps.addEventListener('click', (e) => {
+            let lowSelector = document.querySelector("a[href='#low']");//needs to be a tag inside of li tag with id
+            let highSelector = document.querySelector("a[href='#high']");
+            let dateSelector = document.querySelector("a[href='#date']");
+            if(e.target === highSelector) {
+                result = 'high';
+            }else if(e.target === lowSelector)
+                result = 'low';
+            else{
+                result = 'date';
+            }
+            return result;
+            // let lowTemps = []
+            // if(low){
+            //     lowTemps = Record.all.sort(function(a,b){
+            //         return a.temperature - b.temperature;
+            //     });
+            //     document.getElementById('table-body').innerHTML = '';
+            //     lowTemps.forEach(record => record.renderRecords());
+            // }
+            // console.log(lowTemps)
+        })
+    }
 });
+
 
 function getChart(){
     const chartEndPoint = "http://localhost:3000/api/v1/charts"
@@ -53,24 +81,36 @@ function getRecords(){
     .then(response => response.json())
     .then(records => { //gets the records data 
         //console.log(records)
-        records.data.forEach(record => { //data is the object key for the array value
+        let highTemps = records.data.sort(function(a,b){
+            return b.attributes.temperature - a.attributes.temperature;
+        })
+        //let lowTemps = records.data.sort(function(a,b){
+        //     return a.attributes.temperature - b.attributes.temperature;
+        // })
+        // let date = records.data.sort(function(a,b){
+        //     return a.attributes.created_at - b.attributes.created_at;
+        // })
+        //console.log(highTemps)
+        //console.log(lowTemps)
+        //console.log(date)
+        highTemps.forEach(record => { //data is the object key for the array value
             let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class 
             document.querySelector('#table-body').innerHTML += newRecord.renderRecord()
         })
     })
 }
 
-function createFormHandler(e){
+function createFormHandler(e) {
     e.preventDefault(); //prevents page refresh on form submit
-    const systolicInput = document.querySelector('#systolic').value
-    const diastolicInput = document.querySelector('#diastolic').value
+    const systolicInput = document.querySelector('#systolic').value;
+    const diastolicInput = document.querySelector('#diastolic').value;
     const temperatureInput = document.querySelector('#validationDefault02').value
     const pulseInput = document.querySelector('#validationDefault03').value
     const painInput = document.querySelector('#validationDefault04').value
     const commentsInput = document.querySelector('#input-comments').value
     const chartInput = document.querySelector('#charts').value
     const chartId = parseInt(chartInput)
-    postRecord(systolicInput,diastolicInput ,temperatureInput, pulseInput, painInput, commentsInput, chartInput, chartId)
+    postRecord(systolicInput, diastolicInput, temperatureInput, pulseInput, painInput, commentsInput, chartInput, chartId)
 }
 
 function formatDate(date){
@@ -85,6 +125,7 @@ function formatDate(date){
         day = '0' + day;
     return [year, month, day].join('/');
 }
+
 
 function postRecord(systolic, diastolic, temperature, pulse, pain, comments, chart_id) {
     console.log(temperature, pulse, pain, comments, chart_id)
@@ -116,3 +157,18 @@ function postRecord(systolic, diastolic, temperature, pulse, pain, comments, cha
 //     .then(response => response.json())
 //     .then(record => e.target.parentElement.remove());
 // }
+
+// var temps = [];
+// undefined
+// temps
+// []
+// records.data.forEach(record => temps.push(record.attributes.temperature))
+// undefined
+// temps
+// (2) [98.5, 100]
+// temps.sort(function(a,b){return a - b});
+// (2) [98.5, 100]
+// temps.sort(function(a,b){return b - a});
+// (2) [100, 98.5]
+
+// document.getElementsByClassName('.high').addEventListener("click", sortTemp());
