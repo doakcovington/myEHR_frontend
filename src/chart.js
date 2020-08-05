@@ -3,9 +3,10 @@ console.log("chart.js");
 class Chart {
     constructor(id, chartAttributes) {
         this.id = id;
-        this.name = name;
-        this.pcp = pcp;
-        this.dob = dob;
+        this.name = chartAttributes.name;
+        this.pcp = chartAttributes.pcp;
+        this.dob = chartAttributes.dob;
+        Chart.all.push(this);
     }
 
     renderChart() {
@@ -18,3 +19,5 @@ class Chart {
         `
     }
 }
+
+Chart.all = [];
