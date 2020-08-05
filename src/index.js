@@ -78,22 +78,17 @@ function sortByDate(){
     })
 }
 
-function getChart(){
+function getChart() {
     const chartEndPoint = "http://localhost:3000/api/v1/charts";
     
     fetch(chartEndPoint)
     .then(response => response.json())
     .then(chart => {
         chart.data.forEach(chart => {
-            const chartMarkup = `
-            <div class="row">
-                <div class="col-sm-4" style="background-color:lavender;">Name: ${chart.attributes.name}</div>
-                <div class="col-sm-4" style="background-color:lavenderblush;">Date of Birth: ${formatDate(chart.attributes.dob)}</div>
-                <div class="col-sm-4" style="background-color:lavender;">Primary Care Provider: ${chart.attributes.pcp}</div>
-            </>`
-            document.querySelector('#chart-container').innerHTML += chartMarkup;
-        })
-    })
+            let newChart = new Chart(chart.id, chart.attributes);
+            document.querySelector('#chart-container').innerHTML += newChart.renderChart();
+        });
+    });
 }
 
 function getRecords() {
