@@ -71,7 +71,7 @@ function sortByDate(){
     let table = document.querySelector('#table-body');
     table.innerHTML = "";
     let sortedDate = Record.all.sort(function(a,b) {
-        return a.created_at - b.created_at;
+        return a.id - b.id;
     })
     sortedDate.forEach(record => {
         table.innerHTML += record.renderRecord();
