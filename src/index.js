@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 res.json()
             })
             .then(() => e.target.parentElement.parentNode.remove());
+            let value =  Record.findById(id);
+            Record.all = Record.all.filter(record => record !== value) //the record needs to be removed in order for the sort functions to work properly 
         }
     })
 
