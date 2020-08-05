@@ -34,10 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('click', (e) => {
     let highTemps = document.querySelector("a[href='#high']");
     let lowTemps = document.querySelector("a[href='#low']");
+    let tempDates = document.querySelector("a[href='#date']");
     if(e.target === highTemps){
         sortHighTemps();
     }else if(e.target === lowTemps){
         sortLowTemps();
+    }else if(e.target === tempDates) {
+        sortByDate();
     }
 })
 
@@ -76,6 +79,17 @@ function sortLowTemps(){
             //}
         //})
 
+}
+
+function sortByDate(){
+    let table = document.querySelector('#table-body')
+    table.innerHTML = "";
+    let sortedDate = Record.all.sort(function(a,b) {
+        return a.created_at - b.created_at;
+    })
+    sortedDate.forEach(record => {
+        table.innerHTML += record.renderRecord();
+    })
 }
 
 function getChart(){
