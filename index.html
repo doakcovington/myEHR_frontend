@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="src/styles.css">
 </head>
 <body>
@@ -15,7 +17,7 @@
       <div class="page-header">
         <h1>Vital Signs Record Report</h1>
       </div> -->
-      <form>
+      <form id="myForm">
         <div class="col-sm-2 my-1 text-center">
           <label for="validationDefault01"  class="control-label">Primary Care Provider (PCP)</label>
           <select id="charts" name="charts" class="form-control">
@@ -57,7 +59,15 @@
           <tr>
             <th class="text-center">Date</th>
             <th class="text-center">Blood Pressure</th>
-            <th class="text-center">Temperature</th>
+            <th class="text-center dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Temperature
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li id="date"><a href="#date">Sort: Date</a></li>
+                  <li id="high"><a href="#high">Sort: High to Low</a></li>
+                  <li id="low"><a href="#low">Sort: Low to High</a></li>
+                </ul>
+            </th>
             <th class="text-center">Pulse</th>
             <th class="text-center">Pain</th>
             <th class="text-center">Comments</th>
@@ -67,8 +77,9 @@
           <tbody id="table-body">
           </tbody>
       </table>
+      <!---->
     </div>
-    <script type="text/javascript" src="src/index.js"></script>
     <script type="text/javascript" src="src/record.js"></script>
+    <script type="text/javascript" src="src/index.js"></script>
 </body>
 </html>
