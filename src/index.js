@@ -45,44 +45,30 @@ document.addEventListener('click', (e) => {
 })
 
 function sortHighTemps(){
-    // let highTemps = document.querySelector("a[href='#high']");
-    //     highTemps.addEventListener('click', (e) => {
-    //         if(e.target === highTemps) {
-                let table = document.querySelector('#table-body')
-                table.innerHTML = "";
-                let sortedHigh = Record.all.sort(function(a,b){
-                    return b.temperature - a.temperature;
-                })
-                sortedHigh.forEach(record => { //data is the object key for the array value
-                    //sort the data here? using conditionals? 
-                    // let newRecord = new Record(record.id, record) //creates new instance of Record class
-                    table.innerHTML += record.renderRecord();
-                }) 
-            //}
-        //})
+    let table = document.querySelector('#table-body'); //select table body
+    table.innerHTML = ""; //empty table body innerHTML
+    let sortedHigh = Record.all.sort(function(a,b) {
+        return b.temperature - a.temperature;
+    })
+    sortedHigh.forEach(record => {
+        table.innerHTML += record.renderRecord();
+    }) 
 
 }
 
 function sortLowTemps(){
-    // let highTemps = document.querySelector("a[href='#high']");
-    //     highTemps.addEventListener('click', (e) => {
-    //         if(e.target === highTemps) {
-                let table = document.querySelector('#table-body')
-                table.innerHTML = "";
-                let sortedLow = Record.all.sort(function(a,b){
-                    return a.temperature - b.temperature;
-                })
-                sortedLow.forEach(record => { //data is the object key for the array value
-                    //sort the data here? using conditionals?  
-                    table.innerHTML += record.renderRecord();
-                }) 
-            //}
-        //})
-
+    let table = document.querySelector('#table-body');
+    table.innerHTML = "";
+    let sortedLow = Record.all.sort(function(a,b) {
+        return a.temperature - b.temperature;
+    })
+    sortedLow.forEach(record => { 
+        table.innerHTML += record.renderRecord();
+    }) 
 }
 
 function sortByDate(){
-    let table = document.querySelector('#table-body')
+    let table = document.querySelector('#table-body');
     table.innerHTML = "";
     let sortedDate = Record.all.sort(function(a,b) {
         return a.created_at - b.created_at;
@@ -93,7 +79,7 @@ function sortByDate(){
 }
 
 function getChart(){
-    const chartEndPoint = "http://localhost:3000/api/v1/charts"
+    const chartEndPoint = "http://localhost:3000/api/v1/charts";
     
     fetch(chartEndPoint)
     .then(response => response.json())
@@ -105,65 +91,19 @@ function getChart(){
                 <div class="col-sm-4" style="background-color:lavenderblush;">Date of Birth: ${formatDate(chart.attributes.dob)}</div>
                 <div class="col-sm-4" style="background-color:lavender;">Primary Care Provider: ${chart.attributes.pcp}</div>
             </>`
-            document.querySelector('#chart-container').innerHTML += chartMarkup
+            document.querySelector('#chart-container').innerHTML += chartMarkup;
         })
     })
 }
 
-function getRecords(){
+function getRecords() {
     fetch(endPoint)
     .then(response => response.json())
     .then(records => { //gets the records data 
         records.data.forEach(record => { //data is the object key for the array value
-            //sort the data here? using conditionals?
             let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class
             document.querySelector('#table-body').innerHTML += newRecord.renderRecord();
         }) 
-
-        // let highTemps = document.querySelector("a[href='#high']");
-        // highTemps.addEventListener('click', (e) => {
-        //     if(e.target === highTemps) {
-        //         let table = document.querySelector('#table-body')
-        //         table.innerHTML = "";
-        //         let sortedHigh = records.data.sort(function(a,b){
-        //             return b.attributes.temperature - a.attributes.temperature;
-        //         })
-        //         sortedHigh.forEach(record => { //data is the object key for the array value
-        //             //sort the data here? using conditionals?   
-        //             let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class
-        //             table.innerHTML += newRecord.renderRecord();
-        //         }) 
-        //     }
-        // })
-        // let lowTemps = document.querySelector("a[href='#low']");
-        // lowTemps.addEventListener('click', (e) => {
-        //     if(e.target === lowTemps) {
-        //         let table = document.querySelector('#table-body')
-        //         table.innerHTML = "";
-        //         let sortedLow = records.data.sort(function(a,b) {
-        //             return a.attributes.temperature - b.attributes.temperature;
-        //         })
-        //         sortedLow.forEach(record => {
-        //             let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class
-        //             document.querySelector('#table-body').innerHTML += newRecord.renderRecord();
-        //         })
-        //     }
-        // })
-        // let dateSelector = document.querySelector("a[href='#date']");
-        // console.log(dateSelector)
-        // dateSelector.addEventListener('click', (e) => {
-        //     if(e.target === dateSelector) {
-        //         let table = document.querySelector('#table-body');
-        //         table.innerHTML = "";
-        //         let sortedDate = records.data.sort(function(a,b) {
-        //             return a.attributes.created_at - b.attributes.created_at;
-        //         })
-        //         sortedDate.forEach(record => {
-        //             let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class
-        //             document.querySelector('#table-body').innerHTML += newRecord.renderRecord();
-        //         })
-        //     }
-        // })  
     })
 }
 
