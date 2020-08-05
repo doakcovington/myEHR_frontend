@@ -31,6 +31,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+document.addEventListener('click', (e) => {
+    let highTemps = document.querySelector("a[href='#high']");
+    let lowTemps = document.querySelector("a[href='#low']");
+    if(e.target === highTemps){
+        sortHighTemps();
+    }else if(e.target === lowTemps){
+        sortLowTemps();
+    }
+})
+
+function sortHighTemps(){
+    // let highTemps = document.querySelector("a[href='#high']");
+    //     highTemps.addEventListener('click', (e) => {
+    //         if(e.target === highTemps) {
+                let table = document.querySelector('#table-body')
+                table.innerHTML = "";
+                let sortedHigh = Record.all.sort(function(a,b){
+                    return b.temperature - a.temperature;
+                })
+                sortedHigh.forEach(record => { //data is the object key for the array value
+                    //sort the data here? using conditionals? 
+                    // let newRecord = new Record(record.id, record) //creates new instance of Record class
+                    table.innerHTML += record.renderRecord();
+                }) 
+            //}
+        //})
+
+}
+
+function sortLowTemps(){
+    // let highTemps = document.querySelector("a[href='#high']");
+    //     highTemps.addEventListener('click', (e) => {
+    //         if(e.target === highTemps) {
+                let table = document.querySelector('#table-body')
+                table.innerHTML = "";
+                let sortedLow = Record.all.sort(function(a,b){
+                    return a.temperature - b.temperature;
+                })
+                sortedLow.forEach(record => { //data is the object key for the array value
+                    //sort the data here? using conditionals?  
+                    table.innerHTML += record.renderRecord();
+                }) 
+            //}
+        //})
+
+}
+
 function getChart(){
     const chartEndPoint = "http://localhost:3000/api/v1/charts"
     
@@ -59,50 +106,50 @@ function getRecords(){
             document.querySelector('#table-body').innerHTML += newRecord.renderRecord();
         }) 
 
-        let highTemps = document.querySelector("a[href='#high']");
-        highTemps.addEventListener('click', (e) => {
-            if(e.target === highTemps) {
-                let table = document.querySelector('#table-body')
-                table.innerHTML = "";
-                let sortedHigh = records.data.sort(function(a,b){
-                    return b.attributes.temperature - a.attributes.temperature;
-                })
-                sortedHigh.forEach(record => { //data is the object key for the array value
-                    //sort the data here? using conditionals?   
-                    let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class
-                    table.innerHTML += newRecord.renderRecord();
-                }) 
-            }
-        })
-        let lowTemps = document.querySelector("a[href='#low']");
-        lowTemps.addEventListener('click', (e) => {
-            if(e.target === lowTemps) {
-                let table = document.querySelector('#table-body')
-                table.innerHTML = "";
-                let sortedLow = records.data.sort(function(a,b) {
-                    return a.attributes.temperature - b.attributes.temperature;
-                })
-                sortedLow.forEach(record => {
-                    let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class
-                    document.querySelector('#table-body').innerHTML += newRecord.renderRecord();
-                })
-            }
-        })
-        let dateSelector = document.querySelector("a[href='#date']");
-        console.log(dateSelector)
-        dateSelector.addEventListener('click', (e) => {
-            if(e.target === dateSelector) {
-                let table = document.querySelector('#table-body');
-                table.innerHTML = "";
-                let sortedDate = records.data.sort(function(a,b) {
-                    return a.attributes.created_at - b.attributes.created_at;
-                })
-                sortedDate.forEach(record => {
-                    let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class
-                    document.querySelector('#table-body').innerHTML += newRecord.renderRecord();
-                })
-            }
-        })  
+        // let highTemps = document.querySelector("a[href='#high']");
+        // highTemps.addEventListener('click', (e) => {
+        //     if(e.target === highTemps) {
+        //         let table = document.querySelector('#table-body')
+        //         table.innerHTML = "";
+        //         let sortedHigh = records.data.sort(function(a,b){
+        //             return b.attributes.temperature - a.attributes.temperature;
+        //         })
+        //         sortedHigh.forEach(record => { //data is the object key for the array value
+        //             //sort the data here? using conditionals?   
+        //             let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class
+        //             table.innerHTML += newRecord.renderRecord();
+        //         }) 
+        //     }
+        // })
+        // let lowTemps = document.querySelector("a[href='#low']");
+        // lowTemps.addEventListener('click', (e) => {
+        //     if(e.target === lowTemps) {
+        //         let table = document.querySelector('#table-body')
+        //         table.innerHTML = "";
+        //         let sortedLow = records.data.sort(function(a,b) {
+        //             return a.attributes.temperature - b.attributes.temperature;
+        //         })
+        //         sortedLow.forEach(record => {
+        //             let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class
+        //             document.querySelector('#table-body').innerHTML += newRecord.renderRecord();
+        //         })
+        //     }
+        // })
+        // let dateSelector = document.querySelector("a[href='#date']");
+        // console.log(dateSelector)
+        // dateSelector.addEventListener('click', (e) => {
+        //     if(e.target === dateSelector) {
+        //         let table = document.querySelector('#table-body');
+        //         table.innerHTML = "";
+        //         let sortedDate = records.data.sort(function(a,b) {
+        //             return a.attributes.created_at - b.attributes.created_at;
+        //         })
+        //         sortedDate.forEach(record => {
+        //             let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class
+        //             document.querySelector('#table-body').innerHTML += newRecord.renderRecord();
+        //         })
+        //     }
+        // })  
     })
 }
 
@@ -149,7 +196,7 @@ function postRecord(systolic, diastolic, temperature, pulse, pain, comments, cha
         const recordData = record.data
         let newRecord = new Record(recordData.id, recordData.attributes) //creates new instance of Record class 
         document.querySelector('#table-body').innerHTML += newRecord.renderRecord()
-        location.reload();
+        //location.reload();
     })
     // .catch((error) => {
     //     console.log(error);
