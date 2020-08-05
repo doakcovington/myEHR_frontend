@@ -11,6 +11,7 @@
 </head>
 <body>
   <div id="chart-container"></div>
+  
   <div class="container-fluid">
     <h1>Vital Signs Record Report</h1>
     <!-- <div class="container-fluid">
@@ -18,42 +19,45 @@
         <h1>Vital Signs Record Report</h1>
       </div> -->
       <form id="myForm">
-        <div class="col-sm-2 my-1 text-center">
+        <div class="col-sm-2 my-3 text-center">
           <label for="validationDefault01"  class="control-label">Primary Care Provider (PCP)</label>
           <select id="charts" name="charts" class="form-control">
             <option value="1">Dr.Hoffman</option>
             <option value="2">Dr. Test</option>
           </select>
         </div>
-        <div class="col-sm-2 my-1 text-center">
+        <div class="col-sm-1 my-3 text-center">
           <label for="Blood Pressure"  class="control-label">Blood Pressure</label>
-          <div class="col-md-6 text-center">
-            <input id="systolic" type="number" name="systolic" class="form-control" placeholder="" required>
-          </div>
-          <div class="col-md-6 text-center">
-            <input id="diastolic" type="number" name="diastolic" class="form-control" placeholder="" required>
+          <div class="text-center">
+            <input id="systolic" type="number" name="systolic" class="form-control" placeholder= 0 required>
+          </div>/
+          <div class="text-center">
+            <input id="diastolic" type="number" name="diastolic" class="form-control" placeholder= 0 required>
           </div>
         </div>
-        <div class="col-sm-2 my-1 text-center">
+        <div class="col-sm-1 my-3 text-center">
           <label for="validationDefault02"  class="control-label">Temperature</label>
-          <input id="validationDefault02" type="text" name="temperature" class="form-control" placeholder="Temperature" required>
+          <input id="validationDefault02" type="text" name="temperature" class="form-control" placeholder= 0 required>
         </div>
-        <div class="col-sm-2 my-1 text-center">
+        <div class="col-sm-1 my-3 text-center">
           <label for="validationDefault03"  class="control-label">Pulse</label>
-          <input id="validationDefault03" type="text" name="pulse" class="form-control" placeholder="Pulse" required>
+          <input id="validationDefault03" type="text" name="pulse" class="form-control" placeholder= 0 required>
         </div>
-        <div class="col-sm-2 my-1 text-center">
+        <div class="col-sm-1 my-3 text-center">
           <label for="validationDefault04" class="control-label">Pain</label>
-          <input id="validationDefault04" type="text" name="pain" class="form-control" placeholder="Pain" required>
+          <input id="validationDefault04" type="text" name="pain" class="form-control" placeholder= 0 required>
         </div>
-        <div class="col-sm-2 my-1 text-center">
+        <div class="col-sm-4 my-3 text-center">
           <label for="comments"  class="control-label">Comments</label>
           <textarea id="input-comments" name="comments" placeholder="Comments" class="form-control"></textarea>
         </div>
-          <!-- <input id= 'create-button' type="submit" name="submit" value="Create New Record" class="submit"> -->
+        <div class="col-sm-2 my-3 text-center">
           <button type="submit" class="btn btn-primary btn-lg">Add Vitals to Record</button>
+        </div>
       </form>
+    </div>  
     
+    <div class="container-fluid">
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
