@@ -2,22 +2,22 @@
     text-align: center;   
 }
 
-body {
-    color:#2c3e50;
-    background-color:#ecf0f1;
-}
-
-#chart-container{
-    color: #2c3e50;
-    background-color:#95a5a6;
+ #chart-container{
+    color: #2d3436;
+    background-color:#74b9ff;
     text-align: center;
     font-size: large;
+    font-weight: bold;
 }
 
 
-table, th, td {
+/* table, th, td {
     background-color:white;
     border-style: solid;
     border-color: black;
     border-width: thin;
+} */
+
+#form {
+    background-color:#dfe6e9;
 }
