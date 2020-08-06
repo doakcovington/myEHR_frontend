@@ -115,6 +115,8 @@ function createFormHandler(e) {
     const chartInput = document.querySelector('#charts').value;
     const chartId = parseInt(chartInput);
     postRecord(systolicInput, diastolicInput, temperatureInput, pulseInput, painInput, commentsInput, chartInput, chartId);
+    const form = document.querySelector('#myForm')
+    form.reset();
 }
 
 function formatDate(date) {
