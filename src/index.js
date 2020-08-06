@@ -143,45 +143,11 @@ function postRecord(systolic, diastolic, temperature, pulse, pain, comments, cha
     })
     .then(response => response.json())
     .then(record => {
-        //console.log(record);
         const recordData = record.data
         let newRecord = new Record(recordData.id, recordData.attributes) //creates new instance of Record class 
         document.querySelector('#table-body').innerHTML += newRecord.renderRecord()
-        //location.reload();
     })
     // .catch((error) => {
     //     console.log(error);
     // })
 }
-
-// function deleteRecord(record){
-//     const recordId = e.target.dataset.recordId
-//     fetch(`${endPoint}/${recordId}`, {
-//         method: 'DELETE'
-//     })
-//     .then(response => response.json())
-//     .then(record => e.target.parentElement.remove());
-// }
-
-    // let selectTemps = document.querySelector("a[href='#high']");
-    // selectTemps.addEventListener('click', (e) => {
-    //     let table = document.querySelector('#table-body')
-    //     table.innerHTML = "";
-    //     let sortedRecords = Record.all.sort(function(a,b){
-    //         if(e.target === selectTemps) {
-    //             return b.temperature - a.temperature;
-    //         }
-    //     });
-    //     sortedRecords.forEach(record => { //data is the object key for the array value
-    //         //sort the data here? using conditionals?
-    //         let newRecord = new Record(record.id, record) //creates new instance of Record class
-    //         document.querySelector('#table-body').innerHTML += newRecord.renderRecord();
-    //     })      
-    // })
-
-            // let highTemps = records.data.sort(function(a,b){
-        //     return b.attributes.temperature - a.attributes.temperature;
-        // })
-        // let lowTemps = records.data.sort(function(a,b){
-        //     return a.attributes.temperature - b.attributes.temperature;
-        // })
