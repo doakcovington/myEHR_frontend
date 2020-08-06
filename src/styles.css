@@ -1,3 +1,23 @@
 .bg-danger {
     text-align: center;   
- }
+}
+
+ #chart-container{
+    color: #2d3436;
+    background-color:#74b9ff;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
+
+
+/* table, th, td {
+    background-color:white;
+    border-style: solid;
+    border-color: black;
+    border-width: thin;
+} */
+
+#form {
+    background-color:#dfe6e9;
+}
