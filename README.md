@@ -2,7 +2,7 @@
 
 Welome to the Vital Signs Record Sheet web app! 
 This is a single page web app built using JavaScript for the frontend and Rails for the backend. 
-The back end is located [here](https://github.com/doakcovington/myEHR_backend) on GitHub.
+The API is located [here](https://github.com/doakcovington/myEHR_backend) on GitHub.
 
 ## Installation
 Follow these steps to get the frontend running:
